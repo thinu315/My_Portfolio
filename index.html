@@ -3,25 +3,642 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thayalan | Digital Marketing Strategist</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>T.Thayalan | Digital Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Inter,sans-serif;background:#050505;color:#fff}
-.hero{height:100vh;display:flex;align-items:center;padding:0 8%;
-background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.5)),url('./hero.png');
-background-size:cover;background-position:center}
-h1{font-size:clamp(4rem,8vw,8rem);line-height:.9}
-span.red{color:#ff3b3b}
-.btn{display:inline-block;padding:16px 30px;background:#ff3b3b;color:#fff;text-decoration:none;border-radius:999px}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #FF2D20;
+  --red-dim: rgba(255,45,32,0.18);
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #161616;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.14);
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.5);
+  --muted2: rgba(255,255,255,0.3);
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 0.5px solid var(--border);
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: #fff; }
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: #fff; }
+.nav-icons { display: flex; gap: 12px; }
+.nav-icon { width: 34px; height: 34px; border: 0.5px solid var(--border-strong); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--muted); cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.nav-icon:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+.nav-icon svg { width: 14px; height: 14px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  margin: 80px 20px 0;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('data:image/jpeg;base64,PORTRAIT_PLACEHOLDER') center/cover no-repeat,
+              linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
+  background-position: center;
+  background-size: cover;
+}
+
+/* Use the uploaded image */
+.hero-bg-img {
+  position: absolute; inset: 0;
+  background-image: url('ChatGPT_Image_Jun_6__2026__02_37_02_PM.png');
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(0.45);
+}
+
+.hero-gradient {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to right, rgba(10,10,10,0.85) 35%, transparent 70%),
+    linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 50%),
+    linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, transparent 30%);
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: end;
+}
+
+.hero-left { }
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 8vw, 110px);
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: #fff;
+  margin-bottom: 24px;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-title em { font-style: normal; color: var(--red); }
+
+.hero-right {
+  text-align: right;
+  max-width: 280px;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+
+.hero-right p { font-size: 13px; line-height: 1.7; color: var(--muted); margin-bottom: 20px; }
+
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-start:hover { background: #e0e0e0; transform: translateY(-1px); }
+.btn-start svg { width: 14px; height: 14px; }
+
+/* ── MARQUEE ROW ── */
+.marquee-section {
+  padding: 0 20px;
+  margin-top: -1px;
+}
+
+.marquee-outer {
+  border: 0.5px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  background: var(--bg2);
+  padding: 22px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-outer::before,
+.marquee-outer::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+}
+.marquee-outer::before { left: 0; background: linear-gradient(to right, var(--bg2), transparent); }
+.marquee-outer::after { right: 0; background: linear-gradient(to left, var(--bg2), transparent); }
+
+.marquee-track { display: flex; gap: 0; animation: marquee 20s linear infinite; white-space: nowrap; }
+.marquee-track:hover { animation-play-state: paused; }
+
+.marquee-item {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 40px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.marquee-item .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 6px var(--red);
+  flex-shrink: 0;
+}
+
+/* ── STATS ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 0.5px solid var(--border);
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.stat {
+  padding: 28px 48px;
+  border-right: 0.5px solid var(--border);
+  text-align: center;
+}
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  letter-spacing: 1px;
+  color: #fff;
+  line-height: 1;
+}
+.stat-num span { color: var(--red); }
+.stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+/* ── SECTION 2 ── */
+.section2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* LEFT: courses grid */
+.courses-panel {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.courses-header {
+  padding: 36px 36px 28px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.section-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.courses-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.courses-header p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-top: 12px;
+  max-width: 400px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.course-card {
+  padding: 28px;
+  border-right: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.course-card:nth-child(2n) { border-right: none; }
+.course-card:nth-child(n+3) { border-bottom: none; }
+.course-card:hover { background: rgba(255,255,255,0.03); }
+
+.course-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  color: rgba(255,255,255,0.12);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.course-icon {
+  width: 36px; height: 36px;
+  background: var(--red-dim);
+  border: 0.5px solid rgba(255,45,32,0.25);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+
+.course-icon svg { width: 16px; height: 16px; color: var(--red); }
+
+.course-title { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+.course-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.course-card.active { background: rgba(255,45,32,0.06); }
+.course-card.active .course-num { color: rgba(255,45,32,0.3); }
+
+.btn-learn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--red);
+  color: #fff; border: none;
+  border-radius: 100px;
+  padding: 10px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  margin-left: 28px;
+  margin-bottom: 28px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-learn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-learn svg { width: 12px; height: 12px; }
+
+/* RIGHT: media panel */
+.media-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.media-header {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+}
+
+.media-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.media-header p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+.media-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  flex: 1;
+}
+
+.thumb {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16/10;
+  background: var(--bg3);
+  border: 0.5px solid var(--border);
+  cursor: pointer;
+}
+
+.thumb-large { grid-column: 1 / -1; aspect-ratio: 16/8; }
+
+.thumb-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a0a0a, #0d0d0d);
+  transition: transform 0.4s;
+}
+.thumb:hover .thumb-bg { transform: scale(1.03); }
+
+/* Cinematic stills from image */
+.thumb-1 .thumb-bg {
+  background: radial-gradient(ellipse at 60% 40%, rgba(180,20,10,0.4), transparent 60%),
+              linear-gradient(180deg, #120808, #050505);
+}
+.thumb-2 .thumb-bg {
+  background: radial-gradient(ellipse at 40% 50%, rgba(255,80,20,0.3), transparent 60%),
+              linear-gradient(180deg, #0d0808, #050505);
+}
+.thumb-3 .thumb-bg {
+  background: radial-gradient(ellipse at 50% 30%, rgba(100,30,10,0.5), transparent 60%),
+              linear-gradient(180deg, #0f0a06, #050505);
+}
+
+/* Person silhouette in large thumb */
+.thumb-1::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 90%;
+  background: radial-gradient(ellipse at top, rgba(200,60,30,0.2), transparent 50%);
+}
+
+.thumb-play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.12);
+  border: 0.5px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s, transform 0.2s;
+}
+.thumb:hover .thumb-play { background: rgba(255,45,32,0.35); transform: translate(-50%, -50%) scale(1.1); }
+.thumb-play svg { width: 14px; height: 14px; color: #fff; margin-left: 2px; }
+
+.thumb-label {
+  position: absolute;
+  bottom: 12px; left: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 10px;
+  border-radius: 100px;
+  backdrop-filter: blur(6px);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links { display: none; }
+  .hero { margin: 70px 12px 0; border-radius: 14px; }
+  .hero-content { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+  .hero-right { max-width: 100%; text-align: left; }
+  .stats-bar { grid-template-columns: 1fr 1fr; }
+  .stat { padding: 20px 24px; }
+  .section2 { grid-template-columns: 1fr; padding: 12px; }
+  .marquee-section { padding: 0 12px; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .course-card:nth-child(n) { border-right: none; }
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">T<span>.</span>Thayalan</div>
+  <ul class="nav-links">
+    <li><a href="#">About Me</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="nav-icons">
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-<div>
-<h1>TURNING <span class="red">ATTENTION</span><br>INTO REVENUE</h1>
-<p>Digital Marketing Strategist specializing in Google Ads, Meta Campaigns, SEO, WordPress and Growth Marketing.</p>
-<a class="btn" href="mailto:thayalan315@outlook.com">Contact Me</a>
-</div>
+  <div class="hero-bg-img"></div>
+  <div class="hero-gradient"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <h1 class="hero-title">
+        BUILD YOUR<br>
+        BRAND <em>IMPOSSIBLE</em><br>
+        TO IGNORE
+      </h1>
+    </div>
+    <div class="hero-right">
+      <p>Results-driven digital marketing specialist with 2+ years turning ad spend into revenue — Meta, Google, WhatsApp, branding, and beyond.</p>
+      <button class="btn-start">
+        Start a Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Stats bar inside hero, at bottom -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">10K<span>+</span></div>
+      <div class="stat-label">Leads Generated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50<span>+</span></div>
+      <div class="stat-label">Brands Worked With</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2<span>+</span></div>
+      <div class="stat-label">Years in Industry</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">95<span>%</span></div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
 </section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <!-- Two full sets for seamless loop -->
+      <div class="marquee-item"><span class="dot"></span>Meta Ads</div>
+      <div class="marquee-item"><span class="dot"></span>Google Ads</div>
+      <div class="marquee-item"><span class="dot"></span>WhatsApp Marketing</div>
+      <div class="marquee-item"><span class="dot"></span>Brand Strategy</div>
+      <div class="marquee-item"><span class="dot"></span>Lead Generation</div>
+      <div class="marquee-item"><span class="dot"></span>Email Campaigns</div>
+      <div class="marquee-item"><span class="dot"></span>OTT Advertising</div>
+      <div class="marquee-item"><span class="dot"></span>Content Writing</div>
+      <div class="marquee-item"><span class="dot"></span>WordPress</div>
+      <div class="marquee-item"><span class="dot"></span>Competitor Analysis</div>
+      <!-- repeat -->
+      <div class="marquee-item"><span class="dot"></span>Meta Ads</div>
+      <div class="marquee-item"><span class="dot"></span>Google Ads</div>
+      <div class="marquee-item"><span class="dot"></span>WhatsApp Marketing</div>
+      <div class="marquee-item"><span class="dot"></span>Brand Strategy</div>
+      <div class="marquee-item"><span class="dot"></span>Lead Generation</div>
+      <div class="marquee-item"><span class="dot"></span>Email Campaigns</div>
+      <div class="marquee-item"><span class="dot"></span>OTT Advertising</div>
+      <div class="marquee-item"><span class="dot"></span>Content Writing</div>
+      <div class="marquee-item"><span class="dot"></span>WordPress</div>
+      <div class="marquee-item"><span class="dot"></span>Competitor Analysis</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section2">
+
+  <!-- LEFT: Services -->
+  <div class="courses-panel">
+    <div class="courses-header">
+      <div class="section-tag">What I Do</div>
+      <h2>THE SKILLS THAT MAKE YOUR BRAND UNFORGETTABLE</h2>
+      <p>Every service is engineered for performance — blending creative storytelling with data-driven precision to grow your brand and audience.</p>
+    </div>
+
+    <div class="courses-grid">
+      <div class="course-card active">
+        <div class="course-num">01</div>
+        <div class="course-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <div class="course-title">Performance Ads — Meta & Google</div>
+        <div class="course-desc">High-ROI campaigns crafted to capture leads and convert audiences on every major platform.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-num">02</div>
+        <div class="course-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="course-title">Personal Branding & Audience Growth</div>
+        <div class="course-desc">Build your authentic voice, style, and community across digital platforms.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-num">03</div>
+        <div class="course-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        </div>
+        <div class="course-title">WhatsApp & Email Marketing</div>
+        <div class="course-desc">Direct-channel strategies that nurture leads and retain customers with precision timing.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-num">04</div>
+        <div class="course-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="course-title">Brand Strategy & Creative Direction</div>
+        <div class="course-desc">Turn abstract ideas into sharp visual campaigns that reflect your vision and attract your audience.</div>
+      </div>
+    </div>
+
+    <button class="btn-learn">
+      View All Services
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+
+  <!-- RIGHT: Media -->
+  <div class="media-panel">
+    <div class="media-header">
+      <div class="section-tag">Portfolio Highlights</div>
+      <h2>CAMPAIGNS BUILT TO CONVERT AT EVERY STAGE</h2>
+      <p>From real estate lead gen to e-commerce product launches, each campaign is engineered for maximum impact across platforms.</p>
+    </div>
+
+    <div class="media-thumbs">
+      <!-- Large thumb -->
+      <div class="thumb thumb-large">
+        <div class="thumb-bg thumb-1"></div>
+        <div class="thumb-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="thumb-label">Bengaluru Real Estate — Lead Gen</div>
+      </div>
+      <!-- Small thumbs -->
+      <div class="thumb">
+        <div class="thumb-bg thumb-2"></div>
+        <div class="thumb-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="thumb-label">FrolicTots — E-Commerce</div>
+      </div>
+      <div class="thumb">
+        <div class="thumb-bg thumb-3"></div>
+        <div class="thumb-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+        <div class="thumb-label">Luxury Automotive — Awareness</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- WE MAKE YOUR BRAND IMPOSSIBLE TO IGNORE — big red marquee -->
+<div style="padding: 48px 20px; overflow: hidden;">
+  <div style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 72px); color: var(--red); letter-spacing: 2px; white-space: nowrap; animation: marqueeRed 15s linear infinite;">
+    WE MAKE YOUR BRAND IMPOSSIBLE TO IGNORE &nbsp;&nbsp;&nbsp; WE MAKE YOUR BRAND IMPOSSIBLE TO IGNORE &nbsp;&nbsp;&nbsp; WE MAKE YOUR BRAND IMPOSSIBLE TO IGNORE &nbsp;&nbsp;&nbsp;
+  </div>
+</div>
+
+<style>
+@keyframes marqueeRed {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.33%); }
+}
+</style>
+
 </body>
 </html>
